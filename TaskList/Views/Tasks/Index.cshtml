@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+
+@model List<Tasks>
+<h1>Index</h1>
+
+<table class="table">
+    <tr>
+        <th>Task Name</th>
+        <th>Due Date</th>
+        <th>Completed?</th>
+    </tr>
+    @foreach (Tasks task in Model)
+    {
+        <tr>
+            <td>@task.TaskName</td>
+            <td>@task.DueDate.ToShortDateString()</td>
+            <td>@task.Completed</td>
+            <td><a href="../Tasks/ChangeStatus?id=@task.Id" class="btn btn-success">Change Completeion Status!</a></td>
+            <td><a href="../Tasks/DeleteTask?id=@task.Id" class="btn btn-danger">Delete Task!</a></td>
+        </tr>
+    }
+
+</table>
+<br />
+<a href="../Tasks/AddTask" class="btn btn-success">Add a Task!</a>
